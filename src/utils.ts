@@ -4,7 +4,7 @@ import fs from "fs-extra";
 export async function setupGitCredentials(githubToken: string) {
   await fs.writeFile(
     `${process.env.HOME}/.netrc`,
-    `machine github.com\nlogin github-actions[bot]\npassword ${githubToken}`
+    `machine github.com\nlogin pinax-bot\npassword ${githubToken}`
   );
 }
 
@@ -34,10 +34,10 @@ export async function execWithOutput(
   };
 }
 export const setupGitUser = async () => {
-  await exec("git", ["config", "user.name", `"github-actions[bot]"`]);
+  await exec("git", ["config", "user.name", `"pinax-bot"`]);
   await exec("git", [
     "config",
     "user.email",
-    `"github-actions[bot]@users.noreply.github.com"`,
+    `"pinax-bot@users.noreply.github.com"`,
   ]);
 };
