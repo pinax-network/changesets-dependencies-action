@@ -1,12 +1,20 @@
 name: ChangesetsDependencies
 description: A GitHub action to automate Changesets creation based on dependencies changes in `package.json` files.
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
 inputs:
   preCommit:
     description: "A script to run before committing the changesets files"
     required: false
+  gitUserName:
+    description: "Git user name for commits"
+    required: false
+    default: "github-actions[bot]"
+  gitUserEmail:
+    description: "Git user email for commits"
+    required: false
+    default: "github-actions[bot]@users.noreply.github.com"
 branding:
   icon: "package"
   color: "blue"
