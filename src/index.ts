@@ -134,8 +134,11 @@ async function fetchJsonFile(
 
   console.debug(`Using base Git SHA for checking previous state: ${baseSha}`);
 
-  await setupGitUser();
-  await setupGitCredentials(githubToken);
+  const gitUserName = core.getInput("gitUserName");
+  const gitUserEmail = core.getInput("gitUserEmail");
+
+  await setupGitUser(gitUserName, gitUserEmail);
+  await setupGitCredentials(githubToken, gitUserName);
 
   const issueContext = github.context.issue;
 
@@ -266,7 +269,7 @@ ${changeset.releases
   .join("\n")}
 ---
 
-dependencies updates: 
+dependencies updates:
 
 ${changeset.summary}
 `;
