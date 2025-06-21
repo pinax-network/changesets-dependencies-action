@@ -35,9 +35,5 @@ export async function execWithOutput(
 }
 export const setupGitUser = async () => {
   await exec("git", ["config", "user.name", `"pinax-bot"`]);
-  await exec("git", [
-    "config",
-    "user.email",
-    `"pinax-bot@users.noreply.github.com"`,
-  ]);
+  await exec("git", ["config", "user.email", `"ops@pinax.network"`]);
 };
